@@ -1,19 +1,17 @@
-// api/yourdata.js
 import express from "express";
 
 const app = express();
 
-app.use(express.urlencoded({ extended: true })); // URL encoder from express
-app.use(express.json()); // Add this if you're also accepting JSON data
+app.use(express.urlencoded({ extended: true })); 
+app.use(express.json()); 
 
 app.get('/', (req, res) => {
     res.send('Thank You For Your Response');
 });
 
-app.post('/', (req, res) => { // Change the route to '/'
-    const { fname, lname, Mobile, email, pwd, cpwd, dob, gender, Country, Image } = req.body;
+app.post('/', (req, res) => { 
+    const { fname, lname, Mobile, email, dob, gender, Country, Image } = req.body;
 
-    // Create a response message
     const responseMessage = `
     <html>
         <head>
@@ -33,9 +31,7 @@ app.post('/', (req, res) => { // Change the route to '/'
     </html>
     `;
 
-    // Send the user data as the response
     res.send(responseMessage);
 });
 
-// Export the app as a serverless function
 export default app;
